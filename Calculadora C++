@@ -1,0 +1,83 @@
+#include <iostream>
+#include <cmath> // Biblioteca para funções matemáticas
+using namespace std;
+
+int main() {
+    char operacao;
+    double num1, num2;
+
+    cout << "Escolha a operação:\n";
+    cout << "+ para Adição\n";
+    cout << "- para Subtração\n";
+    cout << "* para Multiplicação\n";
+    cout << "/ para Divisão\n";
+    cout << "s para Seno\n";
+    cout << "c para Cosseno\n";
+    cout << "t para Tangente\n";
+    cout << "l para Logaritmo natural (ln)\n";
+    cout << "g para Logaritmo na base 10\n";
+    cout << "Digite sua escolha: ";
+    cin >> operacao;
+
+    // Para operações que precisam de apenas um número (trigonometria e logaritmo)
+    if (operacao == 's' || operacao == 'c' || operacao == 't' || operacao == 'l' || operacao == 'g') {
+        cout << "Digite o número: ";
+        cin >> num1;
+
+        switch (operacao) {
+            case 's':
+                cout << "Resultado (seno): " << sin(num1) << endl;
+                break;
+            case 'c':
+                cout << "Resultado (cosseno): " << cos(num1) << endl;
+                break;
+            case 't':
+                cout << "Resultado (tangente): " << tan(num1) << endl;
+                break;
+            case 'l':
+                if (num1 > 0)
+                    cout << "Resultado (logaritmo natural): " << log(num1) << endl;
+                else
+                    cout << "Erro: logaritmo de número não positivo não é definido." << endl;
+                break;
+            case 'g':
+                if (num1 > 0)
+                    cout << "Resultado (logaritmo base 10): " << log10(num1) << endl;
+                else
+                    cout << "Erro: logaritmo de número não positivo não é definido." << endl;
+                break;
+            default:
+                cout << "Operação inválida!" << endl;
+                break;
+        }
+    } else {
+        // Operações que precisam de dois números
+        cout << "Digite o primeiro número: ";
+        cin >> num1;
+        cout << "Digite o segundo número: ";
+        cin >> num2;
+
+        switch (operacao) {
+            case '+':
+                cout << "Resultado (adição): " << num1 + num2 << endl;
+                break;
+            case '-':
+                cout << "Resultado (subtração): " << num1 - num2 << endl;
+                break;
+            case '*':
+                cout << "Resultado (multiplicação): " << num1 * num2 << endl;
+                break;
+            case '/':
+                if (num2 != 0)
+                    cout << "Resultado (divisão): " << num1 / num2 << endl;
+                else
+                    cout << "Erro: divisão por zero não é permitida." << endl;
+                break;
+            default:
+                cout << "Operação inválida!" << endl;
+                break;
+        }
+    }
+
+    return 0;
+}
